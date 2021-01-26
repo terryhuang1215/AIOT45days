@@ -1,0 +1,27 @@
+
+# 從docker_hub下載aline
+sudo docker pull alpine
+
+# 查看目前已下載的container images
+sudo docker images
+
+# 查看目前所有containers執行的status
+sudo docker ps -a
+
+# 建立並啟動alpine container
+# 指定container名稱為my_alpine
+# 並連結本機/home/terry/Workspace/AIoT/docker_hw7到my_alpine container下的/home
+# 使用tail -f 讓my_alpine container在背景執行
+sudo docker run -d --name my_alpine -v /home/terry/Workspace/AIoT/docker_hw7:/home alpine tail -f
+
+# 進入my_alpine container, 離開要打exit
+sudo docker exec -it my_alpine /bin/sh
+
+# 停止運行my_alpine container
+sudo docker stop my_alpine
+
+# 刪除my_alpine container
+sudo docker rm my_alpine
+
+# 最後再確認目前所有containers執行的status
+sudo docker ps -a

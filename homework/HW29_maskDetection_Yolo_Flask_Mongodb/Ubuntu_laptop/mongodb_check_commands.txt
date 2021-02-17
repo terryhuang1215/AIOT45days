@@ -1,0 +1,27 @@
+登入 mongodb 之後，透過下列的指令觀察 mongodb 儲存資料的情形
+
+mongo
+
+> use yolo_mask_pred_db
+> show tables
+
+# 顯示目前有多少筆資料
+> db.Collections.count()
+
+# 顯示一筆資料
+> db.Collections.findOne({label:'good'})
+
+# 有多少筆口罩戴好的資料
+> db.Collections.find({label:'good'}).count()
+
+
+# 有多少筆沒有戴口罩的資料
+> db.Collections.find({label:'none'}).count()
+
+# 查詢沒有戴好口罩的資料 -> { "_id" : ObjectId("5fe0e5f278c8a21762f89079"), "label" : "none", "x" : 239, "y" : 284, "w" : 156, "h" : 153, "img" : "2020-12-22_02_14_08.439808_none.jpg" }。
+
+> db.Collections.find({label:'none'})
+
+
+# 存取影像名稱為 2020-12-22_02_14_11.156883_good.jpg 的影像
+> db.Collections.find({yolo_result:“2020-12-22_02_14_11.156883_good.jpg”})
